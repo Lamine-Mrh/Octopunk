@@ -1,13 +1,20 @@
 public class Code {
     private final Instruction instruction;
+    private final Robot robot;
 
-    public Code(Instruction instruction) {
+    public Code(Instruction instruction, Robot robot) {
         this.instruction = instruction;
+        this.robot = robot;
     }
 
     public Instruction getInstruction() {
         return instruction;
     }
+
+    public Robot getRobot() {
+        return robot;
+    }
+
     public void execute(){
 
     }
@@ -74,8 +81,23 @@ public class Code {
     }
 
     //LINK
-
     public void link(int link){
+        int x = link / 5;
+        int y = link % 5;
+        if (Math.abs(x - robot.getPosX()) <= 1 &&  Math.abs(y - robot.getPosY()) <= 1){
+            robot.setPos(link);
+            robot.setPosX(x);
+            robot.setPosY(y);
+        }
+    }
+
+    //JUMP
+    public void jump(int n){
+        
+    }
+
+    //FJMP
+    public void fjmp(int n){
         
     }
 

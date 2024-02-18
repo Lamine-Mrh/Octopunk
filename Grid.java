@@ -1,20 +1,20 @@
 public class Grid {
     private final int size;
     private int[][] grid;
-    private final int[] links;
+    private final Link link;
 
     public Grid(int size) {
-        this(size, 0, 0);
+        this(size, null);
     }
 
-    public Grid(int size, int linkIn, int linkOut) {
+    public Grid(int size, Link link) {
         this.size = size;
         this.grid = new int[size][size];
-        this.links = new int[2];
+        this.link = link;
     }
 
-    public int[] getLinks(){
-        return links;
+    public Link getLink(){
+        return link;
     }
 
     public int getSize() {
@@ -25,8 +25,15 @@ public class Grid {
         return grid;
     }
 
-    public int get(int x, int y) {
+    public int getElem(int x, int y) {
         return grid[x][y];
+    }
+
+    public int getElem(int x){
+        if(x < 0 || x >= size * size){
+            return -1;
+        }
+        return grid[x / size][x % size];
     }
 
     public void set(int x, int y, int value) {
